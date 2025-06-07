@@ -1,0 +1,274 @@
+using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
+
+namespace StrangeLoop.Core.Models;
+
+/// <summary>
+/// Represents data collected during the monitoring stage
+/// </summary>
+public class MonitoringData
+{
+    public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+    public string SystemId { get; set; } = string.Empty;
+    public Dictionary<string, object> Metrics { get; set; } = new();
+    public List<string> Events { get; set; } = new();
+    public PerformanceMetrics Performance { get; set; } = new();
+    public List<string> Anomalies { get; set; } = new();
+    public string RawData { get; set; } = string.Empty;
+    
+    // Additional properties used by the engine
+    public Dictionary<string, object> SystemMetrics { get; set; } = new();
+    public Dictionary<string, object> PerformanceMetrics { get; set; } = new();
+    public Dictionary<string, object> BehaviorMetrics { get; set; } = new();
+    public Dictionary<string, object> EnvironmentState { get; set; } = new();
+}
+
+/// <summary>
+/// Represents the results of the analysis stage
+/// </summary>
+public class AnalysisResults
+{
+    public DateTime AnalysisTimestamp { get; set; } = DateTime.UtcNow;
+    public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+    public MonitoringData SourceData { get; set; } = new();
+    public List<string> Patterns { get; set; } = new();
+    public List<string> Insights { get; set; } = new();
+    public Dictionary<string, double> ConfidenceScores { get; set; } = new();
+    public List<string> Recommendations { get; set; } = new();
+    public AnalysisMetrics Metrics { get; set; } = new();
+    
+    // Additional properties used by the engine
+    public string RawAnalysis { get; set; } = string.Empty;
+    public List<string> IdentifiedPatterns { get; set; } = new();
+    public List<string> ImprovementOpportunities { get; set; } = new();
+    public string RiskAssessment { get; set; } = string.Empty;
+}
+
+/// <summary>
+/// Represents an optimization plan generated from analysis
+/// </summary>
+public class OptimizationPlan
+{
+    public string PlanId { get; set; } = Guid.NewGuid().ToString();
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+    public AnalysisResults SourceAnalysis { get; set; } = new();
+    public List<OptimizationAction> Actions { get; set; } = new();
+    public int Priority { get; set; }
+    public TimeSpan EstimatedDuration { get; set; }
+    public Dictionary<string, object> Parameters { get; set; } = new();
+    public List<string> Prerequisites { get; set; } = new();
+    
+    // Additional properties used by the engine
+    public string RawPlan { get; set; } = string.Empty;
+    public string ExpectedImpact { get; set; } = string.Empty;
+    public string Timeline { get; set; } = string.Empty;
+}
+
+/// <summary>
+/// Represents insights generated during reflection
+/// </summary>
+public class ReflectionInsights
+{
+    public DateTime ReflectionTimestamp { get; set; } = DateTime.UtcNow;
+    public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+    public OptimizationPlan SourcePlan { get; set; } = new();
+    public List<string> LessonsLearned { get; set; } = new();
+    public List<string> ImprovementOpportunities { get; set; } = new();
+    public Dictionary<string, object> MetaInsights { get; set; } = new();
+    public double EffectivenessScore { get; set; }
+    public List<string> NextSteps { get; set; } = new();
+    
+    // Additional properties used by the engine
+    public string RawReflection { get; set; } = string.Empty;
+    public List<string> ProcessImprovements { get; set; } = new();
+    public List<string> MetaLearning { get; set; } = new();
+}
+
+/// <summary>
+/// Represents knowledge updates to be applied
+/// </summary>
+public class KnowledgeUpdates
+{
+    public DateTime UpdateTimestamp { get; set; } = DateTime.UtcNow;
+    public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+    public ReflectionInsights SourceInsights { get; set; } = new();
+    public Dictionary<string, object> KnowledgeBase { get; set; } = new();
+    public List<string> UpdatedConcepts { get; set; } = new();
+    public List<string> NewKnowledge { get; set; } = new();
+    public int Version { get; set; }
+    public Dictionary<string, object> Metadata { get; set; } = new();
+    
+    // Additional properties used by the engine
+    public List<string> UpdatedPolicies { get; set; } = new();
+    public List<string> UpdatedPatterns { get; set; } = new();
+    public List<string> UpdatedHeuristics { get; set; } = new();
+    public List<string> UpdatedMetrics { get; set; } = new();
+}
+
+/// <summary>
+/// Represents a single optimization action
+/// </summary>
+public class OptimizationAction
+{
+    public string ActionId { get; set; } = Guid.NewGuid().ToString();
+    public string Type { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public Dictionary<string, object> Parameters { get; set; } = new();
+    public int Priority { get; set; }
+    public bool IsExecuted { get; set; }
+    public DateTime? ExecutedAt { get; set; }
+    public string Status { get; set; } = "Pending";
+}
+
+/// <summary>
+/// Represents a complete loop iteration
+/// </summary>
+public class LoopIteration
+{
+    public string IterationId { get; set; } = Guid.NewGuid().ToString();
+    public string Id { get; set; } = Guid.NewGuid().ToString();
+    public int IterationNumber { get; set; }
+    public DateTime StartTime { get; set; } = DateTime.UtcNow;
+    public DateTime? EndTime { get; set; }
+    public MonitoringData? MonitoringData { get; set; }
+    public AnalysisResults? AnalysisResults { get; set; }
+    public OptimizationPlan? OptimizationPlan { get; set; }
+    public ReflectionInsights? ReflectionInsights { get; set; }
+    public KnowledgeUpdates? KnowledgeUpdates { get; set; }
+    public string Status { get; set; } = "InProgress";
+    public Dictionary<string, object> Metadata { get; set; } = new();
+    
+    // Additional properties used by the engine
+    public bool Success { get; set; }
+    public string Error { get; set; } = string.Empty;
+}
+
+/// <summary>
+/// Performance metrics for monitoring
+/// </summary>
+public class PerformanceMetrics
+{
+    public double CpuUsage { get; set; }
+    public double MemoryUsage { get; set; }
+    public double ResponseTime { get; set; }
+    public double Throughput { get; set; }
+    public double ErrorRate { get; set; }
+    public Dictionary<string, double> CustomMetrics { get; set; } = new();
+}
+
+/// <summary>
+/// Analysis-specific metrics
+/// </summary>
+public class AnalysisMetrics
+{
+    public double ProcessingTime { get; set; }
+    public double ConfidenceLevel { get; set; }
+    public int PatternsDetected { get; set; }
+    public int InsightsGenerated { get; set; }
+    public Dictionary<string, double> QualityScores { get; set; } = new();
+}
+
+/// <summary>
+/// Statistics and tracking for the Strange Loop system
+/// </summary>
+public class StrangeLoopStatistics
+{
+    public int TotalIterations { get; set; }
+    public int SuccessfulIterations { get; set; }
+    public int FailedIterations { get; set; }
+    public double AverageIterationTime { get; set; }
+    public DateTime LastIterationTime { get; set; }
+    public Dictionary<string, int> StageCompletionCounts { get; set; } = new();
+    public Dictionary<string, double> StageAverageTimes { get; set; } = new();
+    public double SystemImprovementScore { get; set; }
+    public List<string> RecentAchievements { get; set; } = new();
+    
+    // Additional properties used by the engine
+    public bool IsRunning { get; set; }
+    public TimeSpan AverageIterationDuration { get; set; }
+    public double SuccessRate { get; set; }
+    public Dictionary<string, object> ImprovementMetrics { get; set; } = new();
+}
+
+/// <summary>
+/// Tracks self-improvement progress over time
+/// </summary>
+public class SelfImprovementTracker
+{
+    public Dictionary<string, double> ImprovementScores { get; set; } = new();
+    public List<string> ImprovementAreas { get; set; } = new();
+    public Dictionary<string, List<double>> TrendData { get; set; } = new();
+    public DateTime LastAssessment { get; set; } = DateTime.UtcNow;
+    public double OverallImprovementRate { get; set; }
+      public void RecordImprovement(string area, double score)
+    {
+        ImprovementScores[area] = score;
+        
+        if (!TrendData.ContainsKey(area))
+        {
+            TrendData[area] = new List<double>();
+        }
+        
+        TrendData[area].Add(score);
+        LastAssessment = DateTime.UtcNow;
+    }
+    
+    public void RecordIteration(LoopIteration iteration)
+    {
+        if (iteration?.Success == true && iteration.EndTime.HasValue)
+        {
+            var duration = (iteration.EndTime.Value - iteration.StartTime).TotalMilliseconds;
+            RecordImprovement("IterationDuration", duration);
+            
+            // Track improvement based on iteration success
+            RecordImprovement("SuccessRate", 1.0);
+            
+            // Update overall improvement rate
+            OverallImprovementRate = CalculateOverallImprovementRate();
+        }
+        else if (iteration?.Success == false)
+        {
+            RecordImprovement("SuccessRate", 0.0);
+        }
+    }
+    
+    public Dictionary<string, object> GetMetrics()
+    {
+        return new Dictionary<string, object>
+        {
+            ["total_areas"] = ImprovementAreas.Count,
+            ["total_improvements"] = ImprovementScores.Count,
+            ["overall_rate"] = OverallImprovementRate,
+            ["last_assessment"] = LastAssessment
+        };
+    }
+      public double GetTrend(string area)
+    {
+        if (!TrendData.ContainsKey(area) || TrendData[area].Count < 2)
+        {
+            return 0.0;
+        }
+        
+        var data = TrendData[area];
+        var recent = data.TakeLast(Math.Min(10, data.Count)).ToList();
+        
+        if (recent.Count < 2) return 0.0;
+        
+        // Simple linear trend calculation
+        var n = recent.Count;
+        var sumX = (n * (n - 1)) / 2.0;
+        var sumY = recent.Sum();
+        var sumXY = recent.Select((y, i) => i * y).Sum();
+        var sumX2 = recent.Select((_, i) => i * i).Sum();
+        
+        return (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+    }
+    
+    private double CalculateOverallImprovementRate()
+    {
+        if (ImprovementScores.Count == 0) return 0.0;
+        
+        return ImprovementScores.Values.Average();
+    }
+}

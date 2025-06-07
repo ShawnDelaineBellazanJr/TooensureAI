@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>dotnet-StrangeLoop.ReflectionAgent-0a683114-4784-4b31-bc36-6eac73ca3845</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Microsoft.SemanticKernel" />
+    <PackageReference Include="Microsoft.SemanticKernel.Abstractions" />
+    <PackageReference Include="Microsoft.SemanticKernel.Core" />
+    <PackageReference Include="Microsoft.Extensions.Logging" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\StrangeLoop.Core\StrangeLoop.Core.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\StrangeLoop.Infrastructure\StrangeLoop.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\StrangeLoop.ServiceDefaults\StrangeLoop.ServiceDefaults.csproj" />
+  </ItemGroup>
+</Project>
+

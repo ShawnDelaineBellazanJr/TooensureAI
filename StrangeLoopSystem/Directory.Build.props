@@ -1,0 +1,1 @@
+<Project><PropertyGroup><TargetFramework>net9.0</TargetFramework><Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings><LangVersion>13</LangVersion><TreatWarningsAsErrors>true</TreatWarningsAsErrors><AnalysisLevel>latest-all</AnalysisLevel></PropertyGroup></Project>
